@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/view/widgets/custom_text_tile.dart';
+import 'package:note_app/view/widgets/list_view.dart';
 
 import 'widgets/custom_app_bar.dart';
 
@@ -14,8 +15,8 @@ class Body extends StatelessWidget {
         children: const [
           SizedBox(height: 75),
           CustomAppBar(),
-          SizedBox(height: 20),
-          TextBody(),
+
+          Expanded(child: CustomListView()),
         ],
       ),
     );

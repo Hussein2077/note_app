@@ -5,6 +5,7 @@ class TextBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin:const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.only(top: 24,bottom: 24,left: 16),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24), color: Colors.orange),
