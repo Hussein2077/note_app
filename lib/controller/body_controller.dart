@@ -8,7 +8,6 @@ class BodyControllerImp extends BodyController{
   @override
   toEditPage() {
 Get.toNamed(AppRoutes.editNotePage);
-    throw UnimplementedError();
   }
   
 }
