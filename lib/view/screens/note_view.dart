@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/view/body.dart';
+import 'package:note_app/view/widgets/body.dart';
 import 'package:note_app/view/widgets/add_bottom_sheet.dart';
 class NoteVeiw extends StatelessWidget {
   const NoteVeiw({Key? key}) : super(key: key);

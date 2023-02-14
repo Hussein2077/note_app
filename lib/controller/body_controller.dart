@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:note_app/constant_routes.dart';
+import 'package:note_app/constant/constant_routes.dart';
 
 abstract class BodyController extends GetxController{
   toEditPage();
