@@ -15,9 +15,9 @@ class AddBottomSheet extends StatelessWidget {
           ),
           CustomTextFeild(hintText: 'title',),
           SizedBox(
-            height: 32,
+            height: 16,
           ),
-          CustomTextFeild(hintText: 'title',),
+          CustomTextFeild(hintText: 'content',maxLines: 5,),
         ],
       ),
     );

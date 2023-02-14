@@ -3,15 +3,18 @@ import 'package:note_app/constant.dart';
 
 class CustomTextFeild extends StatelessWidget {
   final String hintText;
-
-  const CustomTextFeild({Key? key, required this.hintText}) : super(key: key);
+final int maxLines;
+  const CustomTextFeild({Key? key, required this.hintText, this.maxLines=1}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      textAlign: TextAlign.start,
+      maxLines: maxLines,
       decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(color: kPrimaryColor),
+
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: Colors.white)),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:note_app/constant_routes.dart';
+import 'package:note_app/routes.dart';
 
 import 'package:note_app/view/note_view.dart';
 
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Note App',
       theme: ThemeData(
@@ -19,6 +22,7 @@ class MyApp extends StatelessWidget {
 fontFamily: 'Poppins'
       ),
       home: const NoteVeiw(),
+      routes:routes,
     );
   }
 }
