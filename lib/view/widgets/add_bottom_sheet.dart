@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:note_app/controller/bottom_sheet_controller.dart';
 import 'package:note_app/view/widgets/custom_botton.dart';
 import 'package:note_app/view/widgets/custom_text_feild.dart';
 
@@ -25,7 +28,7 @@ class _CustomBttomSheetFormState extends State<CustomBttomSheetForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   String? title, subtitle;
-
+  BottomSheetControllerImp controller=Get.put(BottomSheetControllerImp());
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -39,7 +42,8 @@ class _CustomBttomSheetFormState extends State<CustomBttomSheetForm> {
           CustomTextFeild(
             hintText: 'title',
             onSaved: (val) {
-              title = val;
+              controller.onSaved(val: val,title: title!);
+
             },
           ),
           const SizedBox(
@@ -49,7 +53,7 @@ class _CustomBttomSheetFormState extends State<CustomBttomSheetForm> {
             hintText: 'content',
             maxLines: 5,
             onSaved: (val) {
-              subtitle = val;
+              controller.onSavedSub(val: val,subTitle: subtitle!);
             },
           ),
           const SizedBox(
@@ -58,13 +62,9 @@ class _CustomBttomSheetFormState extends State<CustomBttomSheetForm> {
           CustomBotton(
             title: 'Save',
             onPressed: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-              } else {
-                autoValidateMode = AutovalidateMode.always;
-                setState(() {});
+           controller.savedButton(formKey:formKey,autoValidateMode:autoValidateMode);
               }
-            },
+
           ),
         ],
       ),
