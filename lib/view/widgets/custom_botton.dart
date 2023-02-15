@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/constant/constant.dart';
 class CustomBotton extends StatelessWidget {
-  const CustomBotton({Key? key, required this.title}) : super(key: key);
+  const CustomBotton({Key? key, required this.title, this.onPressed}) : super(key: key);
 final String title;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: BoxDecoration(
         color: kPrimaryColor.withOpacity(.6),
@@ -12,9 +14,9 @@ final String title;
 
       ),
       width: double.infinity,
-      child: MaterialButton(onPressed: (){}
+      child: MaterialButton(onPressed: onPressed
         ,child: Text(title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
           ),),
 

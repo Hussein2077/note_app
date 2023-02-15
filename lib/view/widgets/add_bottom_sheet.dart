@@ -7,22 +7,65 @@ class AddBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 16),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: CustomBttomSheetForm(),
+    );
+  }
+}
+
+class CustomBttomSheetForm extends StatefulWidget {
+  const CustomBttomSheetForm({Key? key}) : super(key: key);
+
+  @override
+  State<CustomBttomSheetForm> createState() => _CustomBttomSheetFormState();
+}
+
+class _CustomBttomSheetFormState extends State<CustomBttomSheetForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  String? title, subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      autovalidateMode: autoValidateMode,
       child: Column(
-        children:  const [
-        SizedBox(
+        children: [
+          const SizedBox(
             height: 32,
           ),
-          CustomTextFeild(hintText: 'title',),
-          SizedBox(
+          CustomTextFeild(
+            hintText: 'title',
+            onSaved: (val) {
+              title = val;
+            },
+          ),
+          const SizedBox(
             height: 16,
           ),
-          CustomTextFeild(hintText: 'content',maxLines: 5,),
-          SizedBox(
+          CustomTextFeild(
+            hintText: 'content',
+            maxLines: 5,
+            onSaved: (val) {
+              subtitle = val;
+            },
+          ),
+          const SizedBox(
             height: 16,
           ),
-          CustomBotton(title: 'Save'),
+          CustomBotton(
+            title: 'Save',
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                autoValidateMode = AutovalidateMode.always;
+                setState(() {});
+              }
+            },
+          ),
         ],
       ),
     );
