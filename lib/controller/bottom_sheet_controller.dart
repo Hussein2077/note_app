@@ -1,5 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+
+import '../constant/constant.dart';
+import '../models/note_model.dart';
 
 abstract class BottomSheetController extends GetxController {
   onSaved({required val, required String title});
@@ -9,6 +14,7 @@ abstract class BottomSheetController extends GetxController {
   savedButton(
       {required GlobalKey<FormState> formKey,
       required AutovalidateMode autoValidateMode});
+  addNote(NoteModel note);
 }
 
 class BottomSheetControllerImp extends BottomSheetController {
@@ -41,5 +47,18 @@ class BottomSheetControllerImp extends BottomSheetController {
 
     }
     update();
+  }
+
+  @override
+  addNote(NoteModel note) async{
+   try{
+     var noteBox=Hive.box<NoteModel>(kNotesBox);
+     await  noteBox.add(note);
+   }catch(e){
+     if (kDebugMode) {
+       print(e.toString());
+     }
+     update();
+   }
   }
 }
